@@ -3,6 +3,7 @@ import requests
 import requests.packages.urllib3
 import urllib.parse
 import wave
+from dotenv import load_dotenv
 import os
 import multiprocessing
 
@@ -45,10 +46,13 @@ class tts():
             
 
 def generate_hakka_wav(text, index):
-    url = "https://hktts.bronci.com.tw/"
-    ttsUrl = "https://hktts.bronci.com.tw/"
-    username = "hackathon2025_039"
-    password = "!EVuy&4Oq516"
+    # load_dotenv()  # 讀取 .env 檔案
+    # print("🔍 DEBUG:", url, ttsUrl, username, password)
+    # print("check")
+    url = "url"
+    ttsUrl = "ttsUrl"
+    username = "username"
+    password = "password"
     out_path = f"temp_audio/segment_{index}.wav"
     tts(url, username, password, ttsUrl, out_path, text)
 
@@ -59,11 +63,12 @@ def readTxt(txtName):
         return file.read().split("\n")
 
 def tts_api(filepath, threadcount):
+    load_dotenv()  # 讀取 .env 檔案
     transFile = filepath
-    url = "https://hktts.bronci.com.tw/"
-    ttsUrl = "https://hktts.bronci.com.tw/"
-    username = "hackathon2025_039"
-    password = "!EVuy&4Oq516"
+    url = os.getenv("url")
+    ttsUrl = os.getenv("ttsUrl")
+    username = os.getenv("username")
+    password = os.getenv("password")
     scriptText = readTxt(transFile)
     threadCount = int(threadcount)
     workers = []

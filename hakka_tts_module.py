@@ -46,13 +46,11 @@ class tts():
             
 
 def generate_hakka_wav(text, index):
-    # load_dotenv()  # 讀取 .env 檔案
-    # print("🔍 DEBUG:", url, ttsUrl, username, password)
-    # print("check")
-    url = "url"
-    ttsUrl = "ttsUrl"
-    username = "username"
-    password = "password"
+    load_dotenv()  # 讀取 .env 檔案
+    url = os.getenv("url")
+    ttsUrl = os.getenv("ttsUrl")
+    username = os.getenv("account")
+    password = os.getenv("password")
     out_path = f"temp_audio/segment_{index}.wav"
     tts(url, username, password, ttsUrl, out_path, text)
 

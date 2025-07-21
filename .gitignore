@@ -1,4 +1,5 @@
-test
+test.py
 .env
 Hakka_API/
 __pycache__/
+.gitignore
